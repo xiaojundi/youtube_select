@@ -7,10 +7,17 @@ class SearchBar extends Component{
 			term: ''
 		}
 	}
+	onInputChange(term){
+		this.setState({term: term})
+		setTimeout(()=>this.props.searchEvent(term),1000)
+	}
 	render(){
 		return(
 			<div>
-				<input onChange={event=>{this.setState({term: event.target.value})}}/>			
+				<input 
+				value = {this.state.term}
+				onChange={event=>{this.onInputChange(event.target.value)}}
+				/>			
 			</div>
 
 		)
